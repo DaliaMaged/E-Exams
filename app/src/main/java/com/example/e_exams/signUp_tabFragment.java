@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
@@ -33,19 +35,32 @@ public class signUp_tabFragment extends Fragment {
     Button btn;
     CheckBox showPassword;
     RadioGroup radioGroup;
-
+    String type,uid,age,subject1,subject2,subject3,subject4,
+            subject5,subject6,subject7,subject8,subject9,subject10,
+    subject11,subject12,subject13,subject14,subject15,subject16,subject17,
+    year1, year2, year3, year4,subjectList;
     FirebaseAuth mAuth;
+    RadioButton radioProf;
+    RadioButton radiostud;
+    private DatabaseReference mDatabase;
+    private DatabaseReference mUseresRefrence;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sign_up_tab_fragment, container, false);
         email=rootView.findViewById(R.id.email);
         pass=rootView.findViewById(R.id.password);
-
+        pass=rootView.findViewById(R.id.password);
+        radioProf=rootView.findViewById(R.id.radioProf);
+        radiostud=rootView.findViewById(R.id.radioStudent);
         name=rootView.findViewById(R.id.name);
+        type="";
         btn=rootView.findViewById(R.id.signup_button);
         showPassword=rootView.findViewById(R.id.showPass);
         radioGroup=rootView.findViewById(R.id.radioGroup);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mUseresRefrence=mDatabase.child("USERS").push();
+        age ="17";
 
 
 //show password check box
@@ -67,6 +82,7 @@ public class signUp_tabFragment extends Fragment {
     String password= pass.getText().toString().trim();
     String Name= name.getText().toString().trim();
 
+    if (radiostud.isChecked()){type="Student";}
     if(Name.isEmpty()){
         name.setError("Name is Required");
         name.requestFocus();
@@ -91,8 +107,15 @@ public class signUp_tabFragment extends Fragment {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
             if(task.isSuccessful()){
-                User user=new User(Name,Email,password);
 
+                int checkId=radioGroup.getCheckedRadioButtonId();
+                uid = task.getResult().getUser().getUid();
+                User user=new User(Name,Email,password,type,uid,age,subject1,subject2,subject3,subject4
+                        ,subject5,subject6,subject7,subject8,subject9,subject10,
+                        subject11,subject12,subject13,subject14,subject15,subject16,subject17,
+                        year1,year2,year3,year4,subjectList);
+                mUseresRefrence.child(uid).setValue(user);
+                findRadioButtton(checkId);
                 Toast.makeText(getActivity().getBaseContext(),"User Created",Toast.LENGTH_SHORT).show();
 
             }
@@ -107,7 +130,7 @@ public class signUp_tabFragment extends Fragment {
              Toast.makeText(getActivity().getBaseContext(),"Select an Item ",Toast.LENGTH_SHORT).show();
          }
            else {
-               findRadioButtton(checkId);
+
            }
 
        });

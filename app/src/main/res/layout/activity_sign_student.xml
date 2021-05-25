@@ -1,15 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".signStudent">
+    tools:context=".signStudent" >
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textView2"
+        android:layout_width="233dp"
         android:layout_height="wrap_content"
-        android:text="@string/student"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="87dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginRight="80dp"
+        android:gravity="center_horizontal"
+        android:text="Welcome Student"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:textColor="@color/main_color"
+        />
+
+    <LinearLayout
+        android:id="@+id/baseLayout"
+        android:layout_width="match_parent"
+        android:layout_height="585dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="106dp"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/studenId"
+            android:layout_width="341dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="Student ID"
+            android:inputType="number"
+            android:paddingLeft="22dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/main_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textlevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Select Level"
+            android:textColor="@color/main_color"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <RadioGroup
+            android:id="@+id/selectLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/showPass"
+            app:layout_constraintVertical_bias="0.0">
+
+            <RadioButton
+                android:id="@+id/levelOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/main_color"
+                android:text="@string/first"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <RadioButton
+                android:id="@+id/leveltwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/main_color"
+                android:text="@string/second"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <RadioButton
+                android:id="@+id/levelthree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/main_color"
+                android:text="@string/third"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <RadioButton
+                android:id="@+id/levelfour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/main_color"
+                android:text="@string/fourth"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+
+                android:textStyle="italic" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textsubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Select Subjects"
+            android:textColor="@color/main_color"
+            android:textSize="20dp" />
+        <!--         frist level subjects-->
+
+        <!--         second level subjects-->
+
+        <LinearLayout
+            android:id="@+id/fristLevelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="343dp"
+            android:orientation="vertical">
+
+
+            <CheckBox
+                android:id="@+id/checkAL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Algorithms"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkDS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Data Structure"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkDB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Data Base"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkIS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Information System"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondLevelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="343dp"
+            android:orientation="vertical">
+
+
+            <CheckBox
+                android:id="@+id/checkCN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Computer Network"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkDSc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Data Science"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkSE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Software Engineering"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkDA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Data Analysis"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkFS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Fundamental of Software"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+        <!--third level supjects-->
+        <LinearLayout
+            android:id="@+id/thirdLevelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="343dp"
+            android:orientation="vertical">
+
+
+            <CheckBox
+                android:id="@+id/checkIP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Image Processing"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkNS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Network Security"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkHC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="History Of Computer"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkCL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Computer Low"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+        <!--fourth level supjects-->
+
+        <LinearLayout
+            android:id="@+id/fourthLevelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="343dp"
+            android:orientation="vertical">
+
+
+            <CheckBox
+                android:id="@+id/checkDC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Digital Circuits"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkCS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Cyber Security"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkOR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Operating Research"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <CheckBox
+                android:id="@+id/checkOS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="@color/main_color"
+                android:text="Operating System"
+                android:textColor="@color/grey"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/NextButton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/btn_bg"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintVertical_bias=".5"
+        app:layout_constraintWidth_percent=".8" />
+</RelativeLayout>

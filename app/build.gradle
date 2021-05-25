@@ -6,12 +6,15 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
+    viewBinding {
+        enabled = true}
 
     defaultConfig {
         applicationId "com.example.e_exams"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
+
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -20,9 +23,15 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
+  viewBinding{
+      enabled=true
+  }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -37,7 +46,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:20.0.2'
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-database:19.6.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.cardview:cardview:1.0.0"
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.7.0@aar'
+    compile 'com.android.support:design:30.1.0'
+
 }

@@ -3,4 +3,23 @@
     <string name="pass_hint">Password</string>
     <string name="student">Student</string>
     <string name="professor">Professor</string>
+    <string name="first">first</string>
+    <string name="second">second </string>
+    <string name="third">third </string>
+    <string name="fourth">fourth</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="level">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+
+    </string-array>
+
+    <string-array name="subjects">
+        <item>Computer Science1</item>
+        <item>Computer Science2</item>
+        <item>Computer Science3</item>
+    </string-array>
 </resources>

@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.e_exams.professor.CreateExams;
+import com.example.e_exams.professor.homeActivityProfesor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -64,7 +66,9 @@ public class login_tabFragment extends Fragment {
                         FirebaseUser user = mAuth.getCurrentUser();
 
                         Toast.makeText(getActivity().getBaseContext(),"User Logged in",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getContext(),user_created.class));
+
+                        Intent intent= new Intent(getActivity(), homeActivityProfesor.class);
+                        startActivity(intent);
 
                     }
                     else {
