@@ -17,15 +17,12 @@ import java.util.List;
 
 
 public class questionTFAdapter extends RecyclerView.Adapter<questionTFAdapter.questionTrueNFasleViewHolder>{
-private trueAndfalses trueAndfalses;
 
-    public questionTFAdapter(com.example.e_exams.professor.models.trueAndfalses trueAndfalses) {
-        this.trueAndfalses = trueAndfalses;
+    private List<trueAndfalses> trueAndfalses;
+
+    public questionTFAdapter(List<trueAndfalses> trueAndfalses) {
+        this.trueAndfalses=trueAndfalses;
     }
-
-    private ArrayList<trueAndfalses> items=new ArrayList<>();
-
-
 
 
     @NonNull
@@ -40,9 +37,9 @@ private trueAndfalses trueAndfalses;
 
 
     public void onBindViewHolder(@NonNull questionTFAdapter.questionTrueNFasleViewHolder holder, int position) {
-        holder.questionTF.setText(items.get(position).gettNfQuestion());
-        holder.firstAns.setText(items.get(position).getFirstAns());
-        holder.secondAns.setText(items.get(position).getSecondAns());
+        holder.questionTF.setText(trueAndfalses.get(position).gettNfQuestion());
+        holder.firstAns.setText(trueAndfalses.get(position).getFirstAns());
+        holder.secondAns.setText(trueAndfalses.get(position).getSecondAns());
 
 
     }
@@ -50,27 +47,22 @@ private trueAndfalses trueAndfalses;
 
     @Override
     public int getItemCount() {
-        return items.size();
-    }
-    public void setItems(ArrayList<trueAndfalses> mcqList){
-        this.items=mcqList;
-        notifyDataSetChanged();
-
-
-    }
-static class questionTrueNFasleViewHolder extends RecyclerView.ViewHolder{
-    private EditText questionTF,firstAns,secondAns;
-    private RadioButton itemSelected;
-
-
-    questionTrueNFasleViewHolder(@NonNull View itemView) {
-        super(itemView);
-        questionTF=itemView.findViewById(R.id.edtQuestion);
-        firstAns=itemView.findViewById(R.id.firstBtn);
-        secondAns=itemView.findViewById(R.id.secondBtn);
-//        itemView.setOnClickListener((View.OnClickListener) this);
-
-
+        return trueAndfalses.size();
     }
 
-}}
+    static class questionTrueNFasleViewHolder extends RecyclerView.ViewHolder{
+        private EditText questionTF;
+        private RadioButton firstAns,secondAns;
+
+
+        questionTrueNFasleViewHolder(@NonNull View itemView) {
+            super(itemView);
+            questionTF=itemView.findViewById(R.id.edtQuestion);
+            firstAns=itemView.findViewById(R.id.trueBtn);
+            secondAns=itemView.findViewById(R.id.falseBtn);
+
+
+
+        }
+
+    }}

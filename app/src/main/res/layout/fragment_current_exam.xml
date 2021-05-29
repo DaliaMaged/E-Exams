@@ -3,13 +3,138 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".student.currentExam">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".student.currentExam"
+    android:background="@color/white">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Current Exam"
-        android:gravity="center"/>
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleDesign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/CardQestion"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:layout_margin="20dp">
+            <TextView
+                android:id="@+id/txtQestion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Question"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IS"
+                android:buttonTint="@color/main_color"
+                android:textColor="@color/main_color"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="50dp"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IT"
+                android:buttonTint="@color/main_color"
+                android:textColor="@color/main_color"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="150dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CS"
+                android:buttonTint="@color/main_color"
+                android:textColor="@color/main_color"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="50dp"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SE"
+                android:buttonTint="@color/main_color"
+                android:textColor="@color/main_color"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="150dp"/>
+        </LinearLayout>
+
+        <!--        <RadioGroup-->
+        <!--            android:id="@+id/radioGroup"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:padding="20dp"-->
+        <!--            android:layout_marginLeft="40dp"-->
+        <!--            >-->
+        <!--            <RadioButton-->
+        <!--                android:id="@+id/radioTrue"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="True"-->
+        <!--                android:textSize="20dp"-->
+        <!--                android:textStyle="bold"-->
+        <!--                android:textColor="@color/main_color"-->
+        <!--                android:buttonTint="@color/main_color"/>-->
+        <!--            <RadioButton-->
+        <!--                android:id="@+id/radioFalse"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="False"-->
+        <!--                android:textSize="20dp"-->
+        <!--                android:textStyle="bold"-->
+        <!--                android:textColor="#4264cc"-->
+        <!--                android:buttonTint="#4264cc"/>-->
+        <!--        </RadioGroup>-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp" android:layout_margin="20dp">
+            <TextView
+                android:id="@+id/cardAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Correct Answer"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:text="SUPMET"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginLeft="35dp"
+            android:backgroundTint="#4264cc"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/btn_bg"
+            android:textColor="@color/white"
+            app:layout_constraintVertical_bias=".5"
+            app:layout_constraintWidth_percent=".8"
+            />
+    </LinearLayout>
+
+
 
 </FrameLayout>

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EExams">
-        <activity android:name=".professor.fragHolder"></activity>
+        <activity android:name=".professor.CreateExamActivity"></activity>
         <activity android:name=".professor.homeActivityProfesor" />
         <activity android:name=".student.homeActivityStudent" />
         <activity android:name=".forgetPasswordActivity" />

@@ -8,8 +8,9 @@ public class User {
             subject5,subject6,subject7,subject8, subject9,subject10,subject11,subject12,
             subject13,subject14,subject15,subject16, subject17, year1, year2, year3, year4,subjectList;
 
+    private ArrayList<String> Subjects;
     public User(String name,String email,String password,String type, String subject1, String subject2,
-                String subject3, String subject4, String year1, String year2, String year3, String year4,String subjectList) {
+                String subject3, String subject4, String year1, String year2, String year3, String year4,String subjectList,ArrayList<String> Subjects) {
 
     this.type=type;
     this.email = email;
@@ -269,6 +270,14 @@ public class User {
     }
 
 
+
+    public ArrayList<String> getSubjects() {
+        return Subjects;
+    }
+
+    public void setSubjects(ArrayList<String> subjects) {
+        Subjects = subjects;
+    }
 
 }
 

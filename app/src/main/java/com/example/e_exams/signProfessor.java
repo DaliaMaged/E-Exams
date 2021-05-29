@@ -49,10 +49,12 @@ public class signProfessor extends AppCompatActivity implements subjectSelectedL
         //firebase
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("USERS").push();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("USERS");
         User user=new User(Name,Email,password,type,uid,age,subject1,subject2,subject3,subject4,subject5,subject6,subject7,subject8,subject9,subject10,
                 subject11,subject12,subject13,subject14,subject15,subject16,subject17,year1,year2,year3,year4,subjectList);
-
+Bundle extras =getIntent().getExtras();
+uid =extras.getString("zuid");
+System.out.println("fuid"+uid);
         selected_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,9 +62,10 @@ public class signProfessor extends AppCompatActivity implements subjectSelectedL
                 Intent intent=new Intent(signProfessor.this, homeActivityProfesor.class);
                 startActivity(intent);
 
-//                user.setSubjectList(arraySubject);
-//                        String id =mDatabase.push().getKey();
-//                        mDatabase.child(id).setValue(user);
+        //        user.setSubjects(arraysubject);
+System.out.println("zezp"+adapter.arrayList_0);
+
+mDatabase.child(uid).child("Courses").setValue(adapter.arrayList_0);
             }
         });
         SetRecylerView();
@@ -84,9 +87,9 @@ public class signProfessor extends AppCompatActivity implements subjectSelectedL
 
     private void SetRecylerView() {
         recycleSubject.setLayoutManager(new LinearLayoutManager(this));
-        adapter=new subjectSelectedAdapter(this,getsebjectselected(),this);
+        adapter=new subjectSelectedAdapter(this,getsebjectselected(),this,uid);
+        System.out.println("theuid"+uid);
         recycleSubject.setAdapter(adapter);
-
     }
     @Override
     public void onSubjectChanged(ArrayList<String> arrayList) {

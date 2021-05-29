@@ -1,22 +1,28 @@
 package com.example.e_exams.student;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.e_exams.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link currentExam#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class currentExam extends Fragment {
 
+public class currentExam extends Fragment {
+    RecyclerView recyclerView;
+    numberQuestionAdapterSt adapterQst;
+    String qNumber[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"};
+    Button btnNext;
+    Dialog mDialog;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,7 +66,23 @@ public class currentExam extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_current_exam, container, false);
+        View Rootview=inflater.inflate(R.layout.fragment_current_exam,container,false);
+        recyclerView=Rootview.findViewById(R.id.recycleDesign);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getBaseContext(),LinearLayoutManager.HORIZONTAL,false));
+        //
+        adapterQst=new numberQuestionAdapterSt(getActivity().getBaseContext(),qNumber);
+
+        recyclerView.setAdapter(adapterQst);
+        btnNext=Rootview.findViewById(R.id.btnNext);
+        mDialog=new Dialog(getActivity().getBaseContext());
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDialog.setContentView(R.layout.popup);
+                mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            }
+        });
+
+        return Rootview;
     }
 }

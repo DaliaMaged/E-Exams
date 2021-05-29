@@ -29,7 +29,7 @@ public class homeActivityProfesor extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Create Exam"));
         tabLayout.addTab(tabLayout.newTab().setText("Exams"));
         tabLayout.addTab(tabLayout.newTab().setText("Degrees"));
-        tabLayout.addTab(tabLayout.newTab().setText("questions"));
+
 
 tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
     @Override

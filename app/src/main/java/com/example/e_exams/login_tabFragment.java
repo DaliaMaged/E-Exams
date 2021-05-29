@@ -11,22 +11,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.e_exams.professor.CreateExams;
 import com.example.e_exams.professor.homeActivityProfesor;
+import com.example.e_exams.student.homeActivityStudent;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class login_tabFragment extends Fragment {
     EditText email;
     EditText pass;
     Button mLoginbtn;
     TextView forgetPass;
+String type;
+    private DatabaseReference mDatabase;
     FirebaseAuth mAuth;
+    String usertype;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.login_tab_fragment, container, false);
 
@@ -58,17 +71,42 @@ public class login_tabFragment extends Fragment {
             if(password.length()<7){
                 pass.setError("Password must be 7 characters or more");
             }
-
+            mAuth=FirebaseAuth.getInstance();
             mAuth.signInWithEmailAndPassword(Email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         FirebaseUser user = mAuth.getCurrentUser();
+                        String  uid = user.getUid();
+                        System.out.println(uid);
+                        mDatabase = FirebaseDatabase.getInstance().getReference().child("USERS").child(uid);
+
 
                         Toast.makeText(getActivity().getBaseContext(),"User Logged in",Toast.LENGTH_SHORT).show();
 
-                        Intent intent= new Intent(getActivity(), homeActivityProfesor.class);
-                        startActivity(intent);
+                        mDatabase.child("type").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull  DataSnapshot snapshot) {
+type= (String) snapshot.getValue();
+
+                                System.out.println(type);
+                                if(type.equals("Doctor")) {
+                                    Intent intent1= new Intent(getActivity(), homeActivityProfesor.class);
+                                    intent1.putExtra("uid",uid);
+                                    startActivity(intent1);
+                                } else if (type.equals("Student")){
+                                    Intent intent= new Intent(getActivity(), homeActivityStudent.class);
+                                    intent.putExtra("uid",uid);
+                                    startActivity(intent);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull  DatabaseError error) {
+                                System.out.println("failed to get data from fire base");
+                            }
+
+                        });
 
                     }
                     else {
@@ -77,14 +115,6 @@ public class login_tabFragment extends Fragment {
                 }
             });
 
-//            //forget pass
-//            switch (v.getId()){
-//                case R.id.login_button:
-//                    getActivity().getBaseContext();
-//                break;
-//                case R.id.forgetPassword:
-//                    startActivity(new Intent(getActivity().getBaseContext(),forgetPasswordActivity.class));
-//            }
 
         });
         //forget password

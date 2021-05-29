@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    >
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -40,25 +41,26 @@
             android:layout_marginRight="0dp"
             android:padding="10dp"
             >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="5dp"
-    android:padding="5dp"
-    >
-            <RadioButton
-                android:id="@+id/firstBtn"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                >
+                <RadioButton
+                    android:id="@+id/firstBtn"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="firstChoice"
-        android:padding="5dp"
-        />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/firstChoice"
+                    android:text="enter "
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    />
 
-</LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,6 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:id="@+id/secondChoice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="sectChoice"
@@ -88,6 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:id="@+id/thirdChoice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="trdChoice"
@@ -105,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:id="@+id/forthChoice"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="fourthChoice"

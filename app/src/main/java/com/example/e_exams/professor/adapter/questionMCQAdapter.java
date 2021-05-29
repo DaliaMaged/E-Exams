@@ -1,5 +1,7 @@
 package com.example.e_exams.professor.adapter;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,65 +15,55 @@ import com.example.e_exams.professor.models.mcqS;
 import com.example.e_exams.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class questionMCQAdapter extends RecyclerView.Adapter<questionMCQAdapter.questionMcqViewHolder>{
-    private ArrayList<mcqS> items=new ArrayList<>();
-private mcqS mcqS;
-
-    public questionMCQAdapter(com.example.e_exams.professor.models.mcqS mcqS) {
+    private List<mcqS> mcqS;
+    public questionMCQAdapter(List<mcqS> mcqS) {
         this.mcqS = mcqS;
+
     }
 
     @NonNull
     @Override
     public questionMcqViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-            return new questionMcqViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.templete_mcq_item,parent,false));
-        }
+        return new questionMcqViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.templete_mcq_item,parent,false));
+    }
 
 
 
 
 
     public void onBindViewHolder(@NonNull questionMcqViewHolder holder, int position) {
-     holder.questionMcq.setText(items.get(position).getMsqQuestion());
-        holder.firstAns.setText(items.get(position).getFirstAns());
-        holder.secondAns.setText(items.get(position).getSecondAns());
-        holder.thirdAns.setText(items.get(position).getThirdANs());
-        holder.fourthAns.setText(items.get(position).getForthAns());
+        holder.questionMcq.setText(mcqS.get(position).getMsqQuestion());
+        holder.firstAns.setText(mcqS.get(position).getFirstAns());
+        holder.secondAns.setText(mcqS.get(position).getSecondAns());
+        holder.thirdAns.setText(mcqS.get(position).getThirdANs());
+        holder.fourthAns.setText(mcqS.get(position).getForthAns());
 
-      }
+    }
 
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return mcqS.size();
     }
-    public void setItems(ArrayList<mcqS> mcqList){
-        this.items=mcqList;
-        notifyDataSetChanged();
 
-
-    }
 
     public class questionMcqViewHolder extends RecyclerView.ViewHolder{
-         EditText questionMcq,firstAns,secondAns,thirdAns,fourthAns;
-         RadioButton itemSelected;
+        EditText questionMcq;
+        EditText firstAns,secondAns,thirdAns,fourthAns;
 
 
-      public  questionMcqViewHolder(@NonNull View itemView) {
+        public  questionMcqViewHolder(@NonNull View itemView) {
             super(itemView);
-            questionMcq=itemView.findViewById(R.id.edtQuestion);
-            firstAns=itemView.findViewById(R.id.firstBtn);
-            secondAns=itemView.findViewById(R.id.secondBtn);
-            thirdAns=itemView.findViewById(R.id.thirdtBtn);
-            fourthAns=itemView.findViewById(R.id.fourthtBtn);
-//            itemView.setOnClickListener((View.OnClickListener) this);
-        }
-
-    }
+            questionMcq = itemView.findViewById(R.id.edtQuestion);
+            firstAns = itemView.findViewById(R.id.firstChoice);
+            secondAns = itemView.findViewById(R.id.secondChoice);
+            thirdAns = itemView.findViewById(R.id.thirdChoice);
+            fourthAns = itemView.findViewById(R.id.forthChoice);
 
 
-}
-
+        }}}

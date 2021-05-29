@@ -17,6 +17,10 @@ public class mcqS {
         this.forthAns = forthAns;
     }
 
+    public void setMsqQuestion(String msqQuestion) {
+        this.msqQuestion = msqQuestion;
+    }
+
     public String getMsqQuestion() {
         return msqQuestion;
     }

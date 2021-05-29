@@ -1,4 +1,4 @@
-package com.example.e_exams.professor;
+package com.example.e_exams.student;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -9,28 +9,28 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.e_exams.professor.CreateExams;
 import com.example.e_exams.professor.Degrees;
 import com.example.e_exams.professor.Exams;
+import com.example.e_exams.student.currentExam;
 
-public class FragmentAdapter extends FragmentStateAdapter {
-    public FragmentAdapter(@NonNull  FragmentManager fragmentManager, @NonNull  Lifecycle lifecycle) {
+public class FragmentAdapterSt extends FragmentStateAdapter {
+    public FragmentAdapterSt(@NonNull  FragmentManager fragmentManager,  Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 
     @NonNull
-
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
             case 1:
-                return new Exams();
+                return new ExamSt();
             case 2:
-                return new Degrees();
-
+                return new DegreesSt();
         }
-        return new CreateExams();
+        return new currentExam();
+
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 3;
     }
 }

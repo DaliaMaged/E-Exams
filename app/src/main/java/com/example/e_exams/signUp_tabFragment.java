@@ -1,6 +1,8 @@
 package com.example.e_exams;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -25,6 +27,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
@@ -59,7 +64,7 @@ public class signUp_tabFragment extends Fragment {
         radioGroup=rootView.findViewById(R.id.radioGroup);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mUseresRefrence=mDatabase.child("USERS").push();
+       mUseresRefrence=mDatabase.child("USERS");
         age ="17";
 
 
@@ -83,6 +88,7 @@ public class signUp_tabFragment extends Fragment {
     String Name= name.getText().toString().trim();
 
     if (radiostud.isChecked()){type="Student";}
+    if (radioProf.isChecked()){type="Doctor";}
     if(Name.isEmpty()){
         name.setError("Name is Required");
         name.requestFocus();
@@ -114,7 +120,14 @@ public class signUp_tabFragment extends Fragment {
                         ,subject5,subject6,subject7,subject8,subject9,subject10,
                         subject11,subject12,subject13,subject14,subject15,subject16,subject17,
                         year1,year2,year3,year4,subjectList);
-                mUseresRefrence.child(uid).setValue(user);
+                Map<String,User>    users =new HashMap<>();
+                users.put(user.getUid(),user);
+                mUseresRefrence.child(user.getUid()).setValue(user);
+                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("uid",uid);
+                editor.apply();
+                       System.out.println("myuid"+uid);
                 findRadioButtton(checkId);
                 Toast.makeText(getActivity().getBaseContext(),"User Created",Toast.LENGTH_SHORT).show();
 
@@ -142,6 +155,8 @@ public class signUp_tabFragment extends Fragment {
         switch (checkId) {
             case R.id.radioProf:
                 Intent intent = new Intent(getActivity().getBaseContext(), signProfessor.class);
+                intent.putExtra("zuid",uid);
+                System.out.println("zuid"+uid);
                 startActivity(intent);
                 break;
             case R.id.radioStudent:

@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 public class homeActivityStudent extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager2;
-    FragmentAdapter adapter;
+    FragmentAdapterSt adapterSt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +22,8 @@ public class homeActivityStudent extends AppCompatActivity {
         tabLayout=findViewById(R.id.viewpagertabSt);
 
         FragmentManager fm=getSupportFragmentManager();
-        adapter=new FragmentAdapter(fm,getLifecycle());
-        viewPager2.setAdapter(adapter);
+        adapterSt=new FragmentAdapterSt(fm,getLifecycle());
+        viewPager2.setAdapter(adapterSt);
 
 
         tabLayout.addTab(tabLayout.newTab().setText("Current Exam"));
