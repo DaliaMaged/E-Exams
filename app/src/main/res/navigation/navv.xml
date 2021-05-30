@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navv"
+    app:startDestination="@id/createExams">
+
+    <fragment
+        android:id="@+id/createExams"
+        android:name="com.example.e_exams.professor.CreateExams"
+        android:label="CreateExams" >
+        <action
+            android:id="@+id/action_createExams_to_templets_fragment"
+            app:destination="@id/templets_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/templets_fragment"
+        android:name="com.example.e_exams.professor.templets_fragment"
+        android:label="fragment_templets_fragment"
+        tools:layout="@layout/fragment_templets_fragment" >
+        <argument
+            android:name="McqNo"
+            app:argType="integer"
+            android:defaultValue="2" />
+    </fragment>
+</navigation>

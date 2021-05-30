@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ public class CreateExams extends Fragment implements AdapterView.OnItemSelectedL
     Spinner subjectsSpinner, levelsSpinner;
     Button nextBtn;
     EditText trueNfalse, mcq;
+    CharSequence trueAndfalsesNo;
+    Editable mcqNo;
 
 
 
@@ -61,11 +64,18 @@ public class CreateExams extends Fragment implements AdapterView.OnItemSelectedL
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("key",mcq.getText().toString());
+                bundle.putString("keyy",trueNfalse.getText().toString());
+
+
                 templets_fragment fragment = new templets_fragment();
+                fragment.setArguments(bundle);
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.home_page_prof, fragment).commit();
 
-                fragmentTransaction.replace(R.id.fragment_create_exam, fragment).commit();
+
 
 
             }
